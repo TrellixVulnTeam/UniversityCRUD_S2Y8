@@ -1,0 +1,9 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    {% for discipline in list_disciplines %}
+    <h1>{{ discipline.name }}</h1>
+    <h3>{{ discipline.workload }}</h3>
+    <h3>{{ discipline.description }}</h3>
+    {% endfor %}
+{% endblock %}

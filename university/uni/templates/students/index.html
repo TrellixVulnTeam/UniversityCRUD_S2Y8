@@ -1,14 +1,30 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
+<div class="container">
+    <br/>
+    <br/>
+    <br/>
 {% if latest_subscribers_list %}
-    <ul>
+<div class="row">
     {% for student in latest_subscribers_list %}
-        <li><a href="{% url 'detail' student.student_id_num %}"> {{ student.first_name }}</a></li>
+    <div class="col-md-4">
+    <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Mr. {{ student.last_name }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted"><strong>Full name:</strong> {{ student.first_name }} {{student.last_name }}</h6>
+              <p class="card-text"><strong>Subscription date: </strong>{{ student.subscription_date }}</p>
+              <p class="card-text"><strong>School year: </strong>{{ student.get_year_in_school_display }}</p>
+              <a href="{% url 'students_detail' student.student_id_num %}" class="btn btn-info">View</a>
+            </div>
+          </div>
+        </div>
+        <!--<li><a href="{% url 'students_detail' student.student_id_num %}"> {{ student.first_name }}</a></li>-->
     {% endfor %}
-    </ul>
+</div>
+
 {% else %}
     <p>No students assigned.</p>
 {% endif %}
-
+</div>
 {% endblock %}

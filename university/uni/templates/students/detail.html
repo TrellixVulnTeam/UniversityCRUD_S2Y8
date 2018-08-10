@@ -2,13 +2,21 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
-        <h1>Mr. {{ student.last_name }}</h1>
-        <ul>
-            {% for discipline in discipline.discipline_set.all %}
-                <li>{{ discipline.name }}</li>
-            {% endfor %}
-        </ul>
+    <br/>
+    <br/>
+    <br/>
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome Mr. {{ student.last_name }}</h1>
+        <p class="lead">Here's your summary!</p>
+        <hr class="my-4">
+        <h4> Your student Id number: {{ student.student_id_num }}</h4>
+        <h3> Full Name: {{ student.first_name }} {{student.last_name }}</h3>
+        <h3> Date of Submission: {{ subscription_date }}</h3>
+        <h3> School Year: {{ student.year_in_school }}</h3>        
+    </div>
+        <a class="btn btn-warning btn-md" href="#" role="button">Edit</a>
+        <a class="btn btn-danger btn-md" href="{% url 'students_delete' student.student_id_num %}" role="button">Delete</a>
+        <a class="btn btn-info btn-md" href="{% url 'students_index' %}" role="button">Back</a>
 </div>
-</div>
+
 {% endblock %}

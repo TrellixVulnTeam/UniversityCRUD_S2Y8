@@ -9,8 +9,22 @@ from . import views
 # app_name = 'uni'
 
 urlpatterns = [
-    path('', views.index, name='index'),
+
+    # ----------- STUDENTS URLs ----------- #
+    path('students/', views.students_index, name='students_index'),
     # ex: /uni/123
-    path('<slug:student_id_num>/', views.detail, name='detail'),
-    #path('<slug:student_id_num>/', views.summary, name='summary'),
+    path('students/<slug:student_id_num>/', views.students_detail, name='students_detail'),
+    path('students/<slug:student_id_num>/', views.students_delete, name='students_delete'),
+
+    # ----------- DISCIPLINES URLs ----------- #
+    path('disciplines/', views.disciplines_index, name='disciplines_index'),
+    path('disciplines/<int:id>/', views.disciplines_detail, name='disciplines_detail'),
+    path('disciplines/create', views.disciplines_create, name='disciplines_create'),
+    
+    # ----------- TEACHERS URLs ----------- #
+    path('teachers/', views.teachers_index, name='teachers_index'),
+    path('teachers/<slug:teacher_id_number>/', views.teachers_detail, name='teachers_detail'),
+
+
+    
 ]

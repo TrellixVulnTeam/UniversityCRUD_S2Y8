@@ -1,0 +1,47 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container">
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+<form action="{% url 'disciplines_create' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-row">
+                <div class="form-group col-md-8">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="workload">Workload</label>
+                  <input type="text" class="form-control" id="workload" name="workload" placeholder="Workload">
+                </div>
+        </div>
+        <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="description">Discipline Description</label>
+                    <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                </div>
+                <div class="form-group col-md-6">
+                        <div class="form-row">
+                                <div class="col-md-12">
+                                        <label for="teacher">Teacher</label>
+                                        <select id="teacher" name="teacher" class="form-control">
+                                                {% for teacher in list_teachers %}
+                                                <option name="teacher" value="{{ teacher.id }}">{{ teacher.first_name }}</option>
+                                                {% endfor %}
+                                        </select>
+                                </div>
+                        </div>
+                        <div class="form-row">
+                                <div class="col-md-6">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                        </div>
+                </div>
+        </div>
+      </form>
+</div>
+      <!-- Name , workload, description -->
+{% endblock %}

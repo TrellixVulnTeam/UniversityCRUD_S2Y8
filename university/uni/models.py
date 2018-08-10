@@ -5,7 +5,6 @@ class Student(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     subscription_date = models.DateTimeField('Subscription Date')
-    year = models.IntegerField(default=1)
     YEAR_IN_SCHOOL_CHOICES = (
     ('FR', 'Freshman'),
     ('SO', 'Sophomore'),
@@ -42,22 +41,21 @@ class Teacher(models.Model):
     )
 
     def __str__(self):
-        return self.last_name
+        template = '{0.last_name} {0.first_name} {0.subscription_date}'
+        return template.format(self)
     
 
 class Discipline(models.Model):
+    discipline_id_num = models.CharField(max_length=20, primary_key=True)
+    students = models.ManyToManyField(Student)
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     workload = models.IntegerField()
     description = models.CharField(max_length=300)
 
     def __str__(self):
-        return self.name, self.description
+        template = '{0.name} {0.description} {0.workload}'
+        return template.format(self)
 
-class Enrollment(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
-    date_of_enrollment = models.DateField('enrollment date')
-    date_of_end = models.DateField('finish date')
 
         
