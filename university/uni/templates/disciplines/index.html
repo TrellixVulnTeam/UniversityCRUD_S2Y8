@@ -1,9 +1,27 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-    {% for discipline in list_disciplines %}
-    <h1>{{ discipline.name }}</h1>
-    <h3>{{ discipline.workload }}</h3>
-    <h3>{{ discipline.description }}</h3>
-    {% endfor %}
+  <div class="container">
+    <br/>
+    <br/>
+    <br/>
+      {% if list_disciplines %}
+      <div class="row">
+              {% for discipline in list_disciplines %}
+              <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ discipline.name }}</h5>
+                          <p class="card-text"><strong>Workload: </strong>{{ discipline.workload }}</p>
+                          <p class="card-text"><strong>Description: </strong>{{ discipline.description }}</p>
+                          <a href="{% url 'disciplines_detail' discipline.discipline_id_num %}" class="btn btn-info">View</a>
+                        </div>
+                </div>
+              </div>
+              {% endfor %}
+      </div>
+      {% else %}
+      <p>No students assigned.</p>
+      {% endif %}
+  </div>
 {% endblock %}

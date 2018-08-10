@@ -1,5 +1,35 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-
+<div class="container">
+        <br/>
+        <br/>
+        <br/>
+        <div class="jumbotron">
+            <h1 class="display-4">{{ discipline.name }}</h1>
+            <p class="lead">{{ discipline.name }} your summary!</p>
+            <hr class="my-4">
+            <h3> Workload: {{ discipline.workload }}</h3>
+            {% if teacher_of_discipline %}
+                <h3>Tutor: Mr. {{ teacher_of_discipline.first_name }} {{ teacher_of_discipline.last_name }}</h3>
+            {% else %}
+                <h3>No tutor yet</h3>
+            {% endif %}
+            <h4> Description: {{ discipline.description }}</h4>
+            {% if students_enrolled %}
+            <h4>Students enrolled: </h4>
+                <ul>
+                    {% for student in students_enrolled %} 
+                        <li>{{ student.first_name }} {{student.last_name }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>There are no students enrolled for this course.</p>
+            {% endif %}
+                            
+        </div>
+            <a class="btn btn-warning btn-md" href="#" role="button">Edit</a>
+            <a class="btn btn-danger btn-md" href="#" role="button">Delete</a>
+            <a class="btn btn-info btn-md" href="{% url 'disciplines_index' %}" role="button">Back</a>
+    </div>
 {% endblock %}

@@ -14,10 +14,9 @@
     
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="#">Students<span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href="#">Teachers</a>
-        <a class="nav-item nav-link" href="#">Disciplines</a>
-        <a class="nav-item nav-link" href="#">Enrollments</a>
+        <a class="nav-item nav-link active" href="{% url 'students_index' %}">Students<span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="{% url 'teachers_index' %}">Teachers</a>
+        <a class="nav-item nav-link" href="{% url 'disciplines_index' %}">Disciplines</a>
       </div>
     </div>
   </nav>

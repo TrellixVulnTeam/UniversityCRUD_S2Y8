@@ -21,10 +21,16 @@
         </div>
         <!--<li><a href="{% url 'students_detail' student.student_id_num %}"> {{ student.first_name }}</a></li>-->
     {% endfor %}
+    
 </div>
-
 {% else %}
     <p>No students assigned.</p>
+    <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                    
+            </div>       
+        </div>
 {% endif %}
 </div>
 {% endblock %}

@@ -1,8 +1,8 @@
 {% extends base/base.html %}
 
 {% block content %}
-<form>
-    <div class="row">
+<form action="{% url 'students_create' %}" method="post">{% csrf_token %}
+    <div class="form-row">
       <div class="col">
         <label for="first_name">First Name:</label>
         <input type="text" class="form-control" placeholder="First name" name="first_name">
@@ -11,6 +11,9 @@
         <label for="last_name">Last Name:</label>
         <input type="text" class="form-control" placeholder="Last name">
       </div>
+    </div>
+    <div class="form-row">
+
     </div>
   </form>
   {% endblock %}

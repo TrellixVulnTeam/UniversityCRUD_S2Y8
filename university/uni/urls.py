@@ -18,7 +18,7 @@ urlpatterns = [
 
     # ----------- DISCIPLINES URLs ----------- #
     path('disciplines/', views.disciplines_index, name='disciplines_index'),
-    path('disciplines/<int:id>/', views.disciplines_detail, name='disciplines_detail'),
+    path('disciplines/<slug:discipline_id_num>/', views.disciplines_detail, name='disciplines_detail'),
     path('disciplines/create', views.disciplines_create, name='disciplines_create'),
     
     # ----------- TEACHERS URLs ----------- #

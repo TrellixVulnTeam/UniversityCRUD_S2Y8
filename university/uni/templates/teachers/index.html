@@ -15,11 +15,10 @@
               <h6 class="card-subtitle mb-2 text-muted"><strong>Full name:</strong> {{ teacher.first_name }} {{teacher.last_name }}</h6>
               <p class="card-text"><strong>Subscription date: </strong>{{ teacher.subscription_date }}</p>
               <p class="card-text"><strong>Domain: </strong>{{ teacher.get_area_of_domain_display }}</p>
-              <a href="{% url 'teachers_detail' teacher.id %}" class="btn btn-info">View</a>
+              <a href="{% url 'teachers_detail' teacher.teacher_id_number %}" class="btn btn-info">View</a>
             </div>
           </div>
         </div>
-        <!--<li><a href="{% url 'students_detail' student.student_id_num %}"> {{ student.first_name }}</a></li>-->
     {% endfor %}
 </div>
 
